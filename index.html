@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    
+
+    <title>Country Top Trumps</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+      .form input[type="number"] {
+        width: 200px;
+      }
+
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Country Top Trumps</h1>
+
+    <p>
+      Guess which Country comes out on top in a key statistic!
+    </p>
+
+
+
+    <div class="countryInformation">
+      <p class="countryName">a</p>
+      <p class="population"></p>
+      <p class="area"></p>
+    </div>
+
+	<div class="gameInformation">
+		<p class="currentStreak"></p>
+		<p class="successFail"></p>
+	</div>
+
+    <script>
+
+
+const countryName = document.querySelector(".countryName");
+const population= document.querySelector(".population");
+const area = document.querySelector(".area");
+
+startButton = document.createElement("button");
+  startButton.textContent = "Start";
+  document.body.append(startButton);
+  startButton.addEventListener("click", startGame);
+
+
+
+
+
+      function startGame() {
+	startButton.parentNode.removeChild(startButton);
+
+	country1Button = document.createElement("button");
+	country1Button.textContent = "1";
+  	document.body.append(country1Button);
+  	country1Button.addEventListener("click", startGame);
+
+	country2Button = document.createElement("button");
+	country2Button.textContent = "2";
+  	document.body.append(country2Button);
+  	country2.addEventListener("click", startGame);
+}
+	
+    </script>
+  </body>
+</html>
