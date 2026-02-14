@@ -15,14 +15,14 @@ startButton = document.createElement("button");
 
 async function loadCountries() {
 	const res = await fetch("data/countryList.json");
-	const countries = await res.json();
+	const countryList = await res.json();
 	
 	console.log("loaded");
 	
-	let randomIndex = Math.floor(Math.random() * countries.length);
-	let randomCountry = countries[randomIndex];
+	let randomIndex = Math.floor(Math.random() * countryList.length);
+	let randomCountry = countryList[randomIndex];
 
-	console.log(randomCountry);
+	return randomCountry;
 }
 
 loadCountries();
