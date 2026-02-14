@@ -14,7 +14,7 @@ startButton = document.createElement("button");
   startButton.addEventListener("click", startGame);
 
 async function loadCountries() {
-	const res = await fetch("data/countryList.json);
+	const res = await fetch("data/countryList.json");
 	const countries = await res.json();
 	
 	console.log("loaded");
