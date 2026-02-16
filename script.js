@@ -63,7 +63,7 @@ function startGame() {
   	document.body.append(country2Button);
   	country2Button.addEventListener("click", startGame);
 
-	fetch('https://api.api-ninjas.com/v1/country?name=${countryCode1}', {
+	fetch(`https://api.api-ninjas.com/v1/country?name=${countryCode1}`, {
 		method: 'GET',
 		headers: {'X-Api-Key': 'nGd0hbfFDc8i3EKNhMK7QprelRyCz85Di20AmkbZ'}
 	})
