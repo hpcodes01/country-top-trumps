@@ -13,16 +13,16 @@ const highestStreak = document.querySelector(".highestStreak");
 const winLose = document.querySelector(".winLose");
 
 const statCategories = {
-	area: "Geographical area (km<sup>2</sup>):",
-	population: "Population:",
-	borders: "Number of bordering Countries:",
+	area: "Geographical area (km<sup>2</sup>)",
+	population: "Population",
+	borders: "Number of bordering Countries",
 	};
 
 const statOptions = ["area", "population", "borders"];
 
 let startButton = document.createElement("button");
 	startButton.textContent = "Start";
-	document.body.append(startButton);
+	document.querySelector(".buttonBlock").append(startButton);
 	startButton.addEventListener("click", () => {
 		startButton.remove();
 		startRound();
@@ -295,23 +295,21 @@ let countryList = {
  
 const countryCodes = Object.keys(countryList);
 
-/*let randomNumber = Math.floor(Math.random() * 247) + 1;
-console.log(randomNumber);
 
 async function loadCountries() {
 	const res = await fetch("data/countryList.json");
-	const countryList = await res.json();
+	const test = await res.json();
 	
 	console.log("loaded");
 	
-	let randomIndex = Math.floor(Math.random() * countryList.length);
+	/*let randomIndex = Math.floor(Math.random() * countryList.length);
 	let randomCountry = countryList[randomIndex];
 
-	return randomCountry;
+	return randomCountry;*/
 }
 
 loadCountries();
-*/
+
 
 async function refreshCountries() {
 
@@ -355,14 +353,14 @@ async function startRound() {
 	country1.textContent = countryName1;
 	country2.textContent = countryName2;
 	
-/*	const img1 = document.querySelector(".flag1");
+	const img1 = document.querySelector(".flag1");
 	img1.src = countryStats1.flags.svg;
 	img1.style.display = "block";
 	
 	const img2 = document.querySelector(".flag2");
 	img2.src = countryStats2.flags.svg;
 	img2.style.display = "block";
-*/
+
 	const randomKey = statOptions[Math.floor(Math.random() * statOptions.length)];
 
 	chosenCategory.innerHTML = statCategories[randomKey];	
@@ -371,7 +369,7 @@ async function startRound() {
 
 	country1Button = document.createElement("button");
 	country1Button.textContent = "1";
-  	document.body.append(country1Button);
+  	document.querySelector(".countryButton1Block").append(country1Button);
   	country1Button.addEventListener("click", () => {
 		country1Button.remove();
 		country2Button.remove();
@@ -380,7 +378,7 @@ async function startRound() {
 
 	country2Button = document.createElement("button");
 	country2Button.textContent = "2";
-  	document.body.append(country2Button);
+  	document.querySelector(".countryButton2Block").append(country2Button);
   	country2Button.addEventListener("click", () => {
 		country1Button.remove();
 		country2Button.remove();
@@ -393,6 +391,7 @@ async function startRound() {
 function checkGuess(playerGuess) {
 
 	if (logicStat1 === logicStat2) {
+		winLose.style.color = "blue";
 		winLose.textContent = "They were the same! Have a free round.";
 		
 		chosenStat1.textContent = logicStat1;
@@ -400,37 +399,36 @@ function checkGuess(playerGuess) {
 
 		continueButton = document.createElement("button");
 		continueButton.textContent = "Continue";
-  		document.body.append(continueButton);
+  		document.querySelector(".buttonBlock").append(continueButton);
   		continueButton.addEventListener("click", () => {
 			continueButton.remove();
 			startRound();
 		});
-	/*country1Button.parentNode.removeChild(country1Button);
-	country2Button.remove();
-	*/
 	return;
 	}
 
 	correctChoice = logicStat1 > logicStat2 ? 1 : 2;
 	if (playerGuess === correctChoice) {
+		winLose.style.color = "green";
 		winLose.textContent = "Correct!";
 		logicStreak ++;
 		currentStreak.textContent = `Current streak: ${logicStreak}`;
 
 	} else {
+		winLose.style.color = "red";
 		winLose.textContent = "Oh no! You lose!";
 
 		chosenStat1.textContent = logicStat1.toLocaleString();
 		chosenStat2.textContent = logicStat2.toLocaleString();
 
-		currentStreak.textContent = "";
+		currentStreak.textContent = "Current streak: 0";
 		logicHighestStreak = logicStreak > logicHighestStreak ? logicStreak : logicHighestStreak;
 		highestStreak.textContent = `Highest streak: ${logicHighestStreak}`;
 		logicStreak = 0;
 
 		restartButton = document.createElement("button");
 		restartButton.textContent = "Try again?";
-  		document.body.append(restartButton);
+  		document.querySelector(".buttonBlock").append(restartButton);
   		restartButton.addEventListener("click", () => {
 			restartButton.remove();
 			startRound();
@@ -443,7 +441,7 @@ function checkGuess(playerGuess) {
 
 	continueButton = document.createElement("button");
 	continueButton.textContent = "Continue";
-  	document.body.append(continueButton);
+  	document.querySelector(".buttonBlock").append(continueButton);
   	continueButton.addEventListener("click", () => {
 		continueButton.remove();
 		startRound();

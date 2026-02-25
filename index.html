@@ -1,64 +1,63 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     
-
-    <title>Country Top Trumps</title>
-
-    <style>
-      html {
-        font-family: sans-serif;
-      }
-
-      body {
-        width: 50%;
-        max-width: 800px;
-        min-width: 480px;
-        margin: 0 auto;
-      }
-
-      .form input[type="number"] {
-        width: 200px;
-      }
-
-      .lastResult {
-        color: white;
-        padding: 3px;
-      }
-    </style>
-  </head>
-
-  <body>
-    <h1>Country Top Trumps</h1>
-
-    <p>
-      Guess which Country comes out on top in a key statistic!
-    </p>
-
-
-
-    <div class="countryInformation">
-	<p class="chosenCategory"></p>
-
-	<p class="country1"></p>
-	<img class="flag1" style="display:none" alt="CountryFlag">
-	<p class="chosenStat1"></p>
+	<link rel="stylesheet" href="styles.css">
+	<title>Country Top Trumps</title>
 	
-	<p class="country2"></p>
-	<img class="flag2" style="display:none" alt="CountryFlag">
-	<p class="chosenStat2"></p>	
+</head>
 
-	<p class="winLose"></p>
-	<p class="currentStreak"></p>
-	<p class="highestStreak"></p>
+<body>
+	<h1>Country Top Trumps</h1>
 
-    </div>
+	<h4>Guess which Country comes out on top in a key statistic!</h2>
 
-	<div class="gameInformation">
-		<p class="currentStreak"></p>
-		<p class="successFail"></p>
+<div class="gameGrid">
+
+	<div class="countryBlock country1Block" style="grid-area: box-1">
+		<p class="country1"></p>
+		<div class="flagBox">
+			<img class="flag1" style="display:none" alt="CountryFlag">
+		</div>
+		<p class="chosenStat1"></p>
 	</div>
+
+	<div class="statBlock" style="grid-area: box-2">
+		<p class="chosenCategory"></p>
+	</div>
+
+	<div class="countryBlock country2Block" style="grid-area: box-3">
+		<p class="country2"></p>
+		<div class="flagBox">
+			<img class="flag2" style="display:none" alt="CountryFlag">
+		</div>
+		<p class="chosenStat2"></p>
+	</div>
+
+	<div class="countryButton1Block" style="grid-area: box-4">
+	</div>
+
+	<div class="countryButton2Block" style="grid-area: box-5">
+	</div>
+
+	<div class="feedbackBlock" style="grid-area: box-6">
+		<p class="winLose"></p>
+	</div>
+
+	<div class="currentStreakBlock" style="grid-area: box-7">
+		<p class="currentStreak"></p>
+	</div>
+
+	<div class="buttonBlock" style="grid-area: box-8">
+	</div>
+	
+	<div class="highestStreakBlock" style="grid-area: box-9">				
+		<p class="highestStreak"></p>
+	</div>
+</div>
+
 <script src="script.js" defer></script>
 
-  </body>
+</body>
 </html>

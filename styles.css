@@ -1,0 +1,88 @@
+html {
+       	font-family: sans-serif;
+	font-size: 160;
+}
+
+body {
+       	margin: 0 auto; 
+	padding: 20px; 
+ 	padding-left: 30%;
+	padding-right: 30%;
+	padding-bottom: 20%
+	background: #f7f7f7; 
+	color: #222; 
+	text-align: center;
+
+	background-image: url("worldmap.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+.gameGrid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(6, 120px);
+	grid-template-areas:
+	"box-1 box-1 . box-3 box-3"
+	"box-1 box-1 box-2 box-3 box-3"
+	"box-1 box-1 . box-3 box-3"
+	"box-4 box-4 . box-5 box-5"
+	"box-6 box-6 box-6 box-6 box-6"
+	"box-7 box-7 box-8 box-9 box-9";
+	background: rgba(255, 255, 255, 0.4);
+	
+}
+
+.gameGrid > div {
+
+	padding: 2em;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+/*.gameGrid p, .gameGrid span {
+	background: rgba(0,0,50,0.3);
+}*/
+
+.flagBox {
+	width: 100%;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.flagBox img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
+.countryBlock {
+	display: flex;
+	flex-direction: column;
+	justify-content:
+	space-between;
+}
+
+.chosenStat1, .chosenStat2 {
+	min-height: 1.5em;
+}
+
+.winLose {
+	font-weight: 600;
+}
+	
