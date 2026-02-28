@@ -1,6 +1,6 @@
 html {
-       	font-family: sans-serif;
-	font-size: 160;
+	font-family: "Inter", sans-serif;
+	font-size: 16px;
 }
 
 body {
@@ -8,11 +8,8 @@ body {
 	padding: 20px; 
  	padding-left: 30%;
 	padding-right: 30%;
-	padding-bottom: 20%
-	background: #f7f7f7; 
-	color: #222; 
+	padding-bottom: 20%;
 	text-align: center;
-
 	background-image: url("worldmap.jpg");
 	background-size: cover;
 	background-position: center;
@@ -25,22 +22,21 @@ h1 {
 }
 
 .gameGrid {
-	display: grid;
+	display: none;
 	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(6, 120px);
-	grid-template-areas:
-	"box-1 box-1 . box-3 box-3"
+	grid-template-rows: repeat(4, 120px);
+	grid-template-areas:	
 	"box-1 box-1 box-2 box-3 box-3"
 	"box-1 box-1 . box-3 box-3"
-	"box-4 box-4 . box-5 box-5"
-	"box-6 box-6 box-6 box-6 box-6"
-	"box-7 box-7 box-8 box-9 box-9";
+	"box-4 box-4 box-4 box-4 box-4"
+	"box-5 box-5 box-6 box-7 box-7";
 	background: rgba(255, 255, 255, 0.4);
-	
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(6px);	
 }
 
 .gameGrid > div {
-
 	padding: 2em;
 	border-radius: 8px;
 	display: flex;
@@ -50,11 +46,6 @@ h1 {
 	height: 100%;
 	overflow: hidden;
 }
-
-
-/*.gameGrid p, .gameGrid span {
-	background: rgba(0,0,50,0.3);
-}*/
 
 .flagBox {
 	width: 100%;
@@ -74,8 +65,7 @@ h1 {
 .countryBlock {
 	display: flex;
 	flex-direction: column;
-	justify-content:
-	space-between;
+	justify-content: space-between;
 }
 
 .chosenStat1, .chosenStat2 {
@@ -84,5 +74,93 @@ h1 {
 
 .winLose {
 	font-weight: 600;
+	font-size: 1.5rem;
 }
-	
+
+.statBlock {
+	margin: 0.5em 0;
+	background: rgba(200, 200, 210, 0.25);
+	backdrop-filter: blur(6px);
+	border-radius: 12px;
+	padding: 1.2em;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
+}
+
+button {
+	background: rgba(50, 70, 120, 0.3);
+	backdrop-filter: blur(3px);
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	border-radius: 5px;
+	font-size: 1.1em;
+	padding: 0.5em 1em;
+	cursor: pointer; 
+}
+
+button:hover {
+	transform: scale(1.05);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+	transform: scale(0.97);
+}
+
+.footer {
+	margin-top: 3rem;
+	padding: 2rem;
+	text-align: center;
+	font-family: "Inter", sans-serif;
+	font-size: 0.9rem;
+	color: #222;
+	background: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(6px);
+	border-radius: 12px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.footer a {
+	color: #005bbb;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.footer a:hover {
+	text-decoration: underline;
+}
+
+.header {
+	background: rgba(255, 255, 255, 0.25);
+	backdrop-filter: blur(6px);
+	border-radius: 12px;
+	padding: 2rem;
+	margin: 2rem auto;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+	text-align: center;
+}
+
+.header h2 {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.header p {
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+}
+
+.header ul {
+	list-style: disc;
+	padding-left: 1.5rem;
+	font-size: 1rem;
+}
+
+.gameInfo {
+	text-align: left;
+}
+
+.header li {
+	margin-bottom: 0.7rem;
+}

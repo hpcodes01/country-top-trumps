@@ -13,18 +13,20 @@ const highestStreak = document.querySelector(".highestStreak");
 const winLose = document.querySelector(".winLose");
 
 const statCategories = {
-	area: "Geographical area (km<sup>2</sup>)",
-	population: "Population",
-	borders: "Number of bordering Countries",
+	area: "geographical area (km<sup>2</sup>)",
+	population: "population",
+	borders: "number of bordering Countries",
 	};
 
 const statOptions = ["area", "population", "borders"];
 
 let startButton = document.createElement("button");
 	startButton.textContent = "Start";
-	document.querySelector(".buttonBlock").append(startButton);
+	document.querySelector(".startButton").append(startButton);
 	startButton.addEventListener("click", () => {
 		startButton.remove();
+		document.querySelector(".gameInfo").style.display = "none";
+		document.querySelector(".gameGrid").style.display = "grid";
 		startRound();
 	});
 
@@ -69,8 +71,26 @@ async function refreshCountries() {
 		countryCode2 = countryCodes[randomNumber]
 		countryName2 = countryList[countryCode2]
 
-		const res1 = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode1}?fields=area,population,borders,flags`);
-		const data1 = await res1.json();
+		let data1;
+		try{
+			const res1 = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode1}?fields=area,population,borders,flags`, {cache: "no-store"});
+			if(!res1.ok) {
+				throw new Error("API error");
+			}
+			data1 = await res1.json();	
+		} catch (err) {
+			winLose.style.color = "red";
+			winLose.textContent = "API error, please click continue button to try again";
+			continueButton = document.createElement("button");
+			continueButton.textContent = "Continue";
+  			document.querySelector(".buttonBlock").append(continueButton);
+  			continueButton.addEventListener("click", () => {
+				continueButton.remove();
+				startRound();
+			});
+			return false;
+		}
+
 		const c1 = data1;
 		countryStats1 = {
 			area: c1.area,
@@ -78,9 +98,30 @@ async function refreshCountries() {
 			borders: Array.isArray(c1.borders) ? c1.borders.length : 0,
 			flags: c1.flags
 			};
+		
+		let data2;
 
-		const res2 = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode2}?fields=area,population,borders,flags`);
-		const data2 = await res2.json();
+		try{
+			const res2 = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode2}?fields=area,population,borders,flags`, {cache: "no-store"});
+
+			if(!res2.ok) {
+				throw new Error("API error");
+			}
+
+			data2 = await res2.json();
+			
+		} catch (err) {
+			winLose.style.color = "red";
+			winLose.textContent = "API error, please click continue button to try again";
+			continueButton = document.createElement("button");
+			continueButton.textContent = "Continue";
+  			document.querySelector(".buttonBlock").append(continueButton);
+  			continueButton.addEventListener("click", () => {
+				continueButton.remove();
+				startRound();
+			});
+			return false;
+		}
 		const c2 = data2;
 		countryStats2 = {
 			area: c2.area,
@@ -88,6 +129,7 @@ async function refreshCountries() {
 			borders: Array.isArray(c2.borders) ? c2.borders.length : 0,
 			flags: c2.flags
 			};
+		return true;
 }
 
 async function startRound() {
@@ -96,10 +138,8 @@ async function startRound() {
 	chosenStat2.textContent = "";
 	winLose.textContent = "";
 
-	await refreshCountries();
-	
-	country1.textContent = countryName1;
-	country2.textContent = countryName2;
+	const ok = await refreshCountries();
+	if (!ok) return;
 	
 	const img1 = document.querySelector(".flag1");
 	img1.src = countryStats1.flags.svg;
@@ -111,25 +151,21 @@ async function startRound() {
 
 	const randomKey = statOptions[Math.floor(Math.random() * statOptions.length)];
 
-	chosenCategory.innerHTML = statCategories[randomKey];	
+	chosenCategory.innerHTML = `Which has the greater ${statCategories[randomKey]}?`;	
 	logicStat1 = countryStats1[randomKey];
 	logicStat2 = countryStats2[randomKey];
 
 	country1Button = document.createElement("button");
-	country1Button.textContent = "1";
-  	document.querySelector(".countryButton1Block").append(country1Button);
+	country1Button.textContent = countryName1;
+  	document.querySelector(".country1Block").append(country1Button);
   	country1Button.addEventListener("click", () => {
-		country1Button.remove();
-		country2Button.remove();
 		checkGuess(1);
 	});
 
 	country2Button = document.createElement("button");
-	country2Button.textContent = "2";
-  	document.querySelector(".countryButton2Block").append(country2Button);
+	country2Button.textContent = countryName2;
+  	document.querySelector(".country2Block").append(country2Button);
   	country2Button.addEventListener("click", () => {
-		country1Button.remove();
-		country2Button.remove();
 		checkGuess(2);
 	});
 	
@@ -137,6 +173,9 @@ async function startRound() {
 }
 
 function checkGuess(playerGuess) {
+
+	country1Button.style.pointerEvents = "none";
+	country2Button.style.pointerEvents = "none";
 
 	if (logicStat1 === logicStat2) {
 		winLose.style.color = "blue";
@@ -150,6 +189,8 @@ function checkGuess(playerGuess) {
   		document.querySelector(".buttonBlock").append(continueButton);
   		continueButton.addEventListener("click", () => {
 			continueButton.remove();
+			country1Button.remove();
+			country2Button.remove();
 			startRound();
 		});
 	return;
@@ -179,6 +220,8 @@ function checkGuess(playerGuess) {
   		document.querySelector(".buttonBlock").append(restartButton);
   		restartButton.addEventListener("click", () => {
 			restartButton.remove();
+			country1Button.remove();
+			country2Button.remove();
 			startRound();
 		})
 	return;
@@ -192,6 +235,8 @@ function checkGuess(playerGuess) {
   	document.querySelector(".buttonBlock").append(continueButton);
   	continueButton.addEventListener("click", () => {
 		continueButton.remove();
+		country1Button.remove();
+		country2Button.remove();
 		startRound();
 	});
 	

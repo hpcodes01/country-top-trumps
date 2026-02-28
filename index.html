@@ -2,23 +2,46 @@
 <html lang="en">
 
 <head>
-    
+
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="styles.css">
+	<link rel="icon" type="image/png" href="favicon.png">
 	<title>Country Top Trumps</title>
 	
 </head>
 
 <body>
-	<h1>Country Top Trumps</h1>
 
-	<h4>Guess which Country comes out on top in a key statistic!</h2>
+<header class="header">
+	
+	<h1 class="site-title">Country Top Trumps</h1>
+	<p class="site-tagline">Guess which country comes out on top in a key statistic!</p>
+
+	<div class = "gameInfo">
+
+		<h2>How to Play</h2>
+		<ul>
+			<li>A random stat category appears between two countries.</li>
+			<li>Simply click the name of the country you think wins the category.</li>
+			<li>See how many you can get right in a row!</li>
+		</ul>
+
+		<h2>Project Information</h2>
+		<ul>
+			<li>Country Top Trumps is a front-end web game built with HTML, vanilla JavaScript and CSS.</li>
+			<li>The website contacts the REST Countries API to access information about random countries.</li>
+			<li>The game features: dynamic round generation, game state management, API error handling and a modern glass card style using a CSS grid layout.</li>		
+		</ul>
+	</div>
+</header>
+
+<div class = "startButton"></div>
 
 <div class="gameGrid">
 
 	<div class="countryBlock country1Block" style="grid-area: box-1">
-		<p class="country1"></p>
 		<div class="flagBox">
-			<img class="flag1" style="display:none" alt="CountryFlag">
+			<img class="flag1" style="display:none" alt="Country Flag">
 		</div>
 		<p class="chosenStat1"></p>
 	</div>
@@ -28,34 +51,34 @@
 	</div>
 
 	<div class="countryBlock country2Block" style="grid-area: box-3">
-		<p class="country2"></p>
 		<div class="flagBox">
-			<img class="flag2" style="display:none" alt="CountryFlag">
+			<img class="flag2" style="display:none" alt="Country Flag">
 		</div>
 		<p class="chosenStat2"></p>
 	</div>
 
-	<div class="countryButton1Block" style="grid-area: box-4">
-	</div>
-
-	<div class="countryButton2Block" style="grid-area: box-5">
-	</div>
-
-	<div class="feedbackBlock" style="grid-area: box-6">
+	<div class="feedbackBlock" style="grid-area: box-4">
 		<p class="winLose"></p>
 	</div>
 
-	<div class="currentStreakBlock" style="grid-area: box-7">
+	<div class="currentStreakBlock" style="grid-area: box-5">
 		<p class="currentStreak"></p>
 	</div>
 
-	<div class="buttonBlock" style="grid-area: box-8">
+	<div class="buttonBlock" style="grid-area: box-6">
 	</div>
 	
-	<div class="highestStreakBlock" style="grid-area: box-9">				
+	<div class="highestStreakBlock" style="grid-area: box-7">				
 		<p class="highestStreak"></p>
 	</div>
 </div>
+
+<footer class="footer">
+
+	<p>Built by Hugh Powell | Country Top Trumps</p>
+	<p><a href="https://github.com/hpcodes01/country-top-trumps" target="_blank">View on GitHub</a></p>
+
+</footer>
 
 <script src="script.js" defer></script>
 
