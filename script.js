@@ -138,8 +138,8 @@ async function startRound() {
 	chosenStat2.textContent = "";
 	winLose.textContent = "";
 
-	const apiSucess = await refreshCountries();
-	if (!apiSuccess) return;
+	const ok = await refreshCountries();
+	if (!ok) return;
 	
 	const img1 = document.querySelector(".flag1");
 	img1.src = countryStats1.flags.svg;
