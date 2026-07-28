@@ -73,7 +73,7 @@ async function refreshCountries() {
 
 		let data1;
 		try{
-			const res1 = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode1}?fields=area,population,borders,flags`, {cache: "no-store"});
+			const res1 = await fetch(`/.netlify/functions/country?code=${countryCode1}`, {cache: "no-store"});
 			if(!res1.ok) {
 				throw new Error("API error");
 			}
@@ -102,7 +102,7 @@ async function refreshCountries() {
 		let data2;
 
 		try{
-			const res2 = await fetch(`https://restcountries.com/v3.1/alpha/${countryCode2}?fields=area,population,borders,flags`, {cache: "no-store"});
+			const res2 = await fetch(`/.netlify/functions/country?code=${countryCode2}`, {cache: "no-store"});
 
 			if(!res2.ok) {
 				throw new Error("API error");
