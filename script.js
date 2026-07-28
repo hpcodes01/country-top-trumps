@@ -96,7 +96,7 @@ async function refreshCountries() {
 			area: c1.area,
 			population: c1.population,
 			borders: Array.isArray(c1.borders) ? c1.borders.length : 0,
-			flags: c1.flags
+			flag: c1.flag
 			};
 		
 		let data2;
@@ -127,7 +127,7 @@ async function refreshCountries() {
 			area: c2.area,
 			population: c2.population,
 			borders: Array.isArray(c2.borders) ? c2.borders.length : 0,
-			flags: c2.flags
+			flag: c2.flag
 			};
 		return true;
 }
@@ -142,11 +142,11 @@ async function startRound() {
 	if (!ok) return;
 	
 	const img1 = document.querySelector(".flag1");
-	img1.src = countryStats1.flags.svg;
+	img1.src = countryStats1.flag.url_svg;
 	img1.style.display = "block";
 	
 	const img2 = document.querySelector(".flag2");
-	img2.src = countryStats2.flags.svg;
+	img2.src = countryStats2.flag.url_svg;
 	img2.style.display = "block";
 
 	const randomKey = statOptions[Math.floor(Math.random() * statOptions.length)];
