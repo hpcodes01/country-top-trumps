@@ -91,9 +91,9 @@ async function refreshCountries() {
 			return false;
 		}
 
-		const c1 = data1;
+		const c1 = data1.data.objects[0];
 		countryStats1 = {
-			area: c1.area,
+			area: c1.area.kilometers,
 			population: c1.population,
 			borders: Array.isArray(c1.borders) ? c1.borders.length : 0,
 			flag: c1.flag
@@ -122,9 +122,9 @@ async function refreshCountries() {
 			});
 			return false;
 		}
-		const c2 = data2;
+		const c2 = data2.data.objects[0];
 		countryStats2 = {
-			area: c2.area,
+			area: c2.area.kilometers,
 			population: c2.population,
 			borders: Array.isArray(c2.borders) ? c2.borders.length : 0,
 			flag: c2.flag
